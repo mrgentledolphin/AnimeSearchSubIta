@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Download</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Downloading, per favore aspetta 3 secondi...</h1>
+        <p>Assicurati che i pop-up per questa pagina web non siano bloccati altrimenti il donwload non partirà. <br>
+            <a href="https://support.google.com/chrome/answer/95472?co=GENIE.Platform%3DDesktop&hl=it">sbloccare i popup su chrome</a><br>
+            <a href="https://support.mozilla.org/it/kb/Controllare%20le%20finestre%20pop-up">sbloccare i popup su firefox</a>
+        </p>
+    </div>
+    
+    <a href="{{link}}" id="asdf"></a>
+    
+
+        <a style="position: fixed; right: 10px; bottom: 10px" class="btn-floating btn-large waves-effect waves-light light-blue lighten-1" href="/"><i class="material-icons">home</i></a>
+    <script>
+        setTimeout(() => {
+            let meta = document.createElement('meta')
+            meta.name = "referrer"
+            meta.content = "no-referrer"
+            document.getElementsByTagName('head')[0].appendChild(meta)
+
+            window.open('{{link}}')
+            window.close()
+        }, 3000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "animeonline",
+  "version": "1.0.0",
+  "description": "Watch anime online",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "anime"
+  ],
+  "author": "MrGentleDolphin",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "hjs": "0.0.6",
+    "jsdom": "^15.1.1",
+    "openload-link": "^1.1.5",
+    "parallel": "^1.2.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

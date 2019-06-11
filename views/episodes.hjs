@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime SUB-ITA Engine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="center-align">Risultati Ricerca</h1>
+        <p>
+            <i class="material-icons">launch</i>: Apri link in nuova tab
+            <i class="material-icons">get_app</i>: Download
+            <i class="material-icons">play_circle_outline</i>: Riproduci qui
+        </p>
+
+        <h3>{{message}}</h3>
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <h4>Episodi</h4>
+            </li>
+        {{#episodes}}
+            <li class="collection-item">
+                <div>{{text}}
+                    <a href="{{link}}" target="_blank" class="secondary-content"><i class="material-icons">launch</i></a>
+                    <form target="_blank" action="/download" method="post" class="secondary-content" data-a="a">
+                        <input type="hidden" value="{{link}}" name="urlAnime">
+                        <a href="#!" class="secondary-content submitter"><i class="material-icons">get_app</i></a>
+                    </form>
+                    <form target="_blank" action="/localPlayer" method="post" class="secondary-content" data-a="a">
+                        <input type="hidden" value="{{link}}" name="urlAnime">
+                        <a href="#!" class="secondary-content submitter"><i class="material-icons">play_circle_outline</i></a>
+                    </form>
+                </div>
+            </li>
+        {{/episodes}}
+        </ul>
+        <div style="width: 100%; height: 200px;"></div>
+
+        <a style="position: fixed; right: 10px; bottom: 10px" class="btn-floating btn-large waves-effect waves-light light-blue lighten-1" href="/"><i class="material-icons">home</i></a>
+    </div>
+    <script>
+        $('.submitter').click(function () {
+            console.log($(this).closest('form').submit())
+        })
+    </script>
+</body>
+
+</html>

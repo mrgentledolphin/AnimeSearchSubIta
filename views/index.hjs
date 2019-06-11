@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime SUB-ITA Engine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Anime SUB-ITA Engine</h1>
+        <form action="/search" method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="animeInput" type="text" name="animeInput" class="validate" required>
+                    <label for="animeInput">Inserisci Nome Anime...</label>
+                </div>
+            </div>
+            <h6>Lista Sorgenti:</h6>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="animeforce"/>
+                        <span>AnimeForce</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="animehdita" />
+                        <span>Anime HD ITA (non ancora disponibile)</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="animeunity" />
+                        <span>AnimeUnity (non ancora disponibile)</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="kuroneko" />
+                        <span>KuroNekoAnimeZone (non ancora disponibile)</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="hentaihaven" />
+                        <span>HentaiHaven (non ancora disponibile)</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" checked name="animeidhentai" />
+                        <span>animeidhentai (non ancora disponibile)</span>
+                    </label>
+                </p>
+            </div>
+            <div class="row">
+                <input type="submit" value="Cerca" class="btn">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
