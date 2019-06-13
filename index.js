@@ -82,53 +82,62 @@ express()
             }
         }, function(err, results) {
             res.render('results', {
-                animeforce: results.one
+                animeforce: results.one,
+                name: animeInput
             })
         })
         
     })
     .post('/animeforce', (req, res) => {
         let link = req.body.urlAnime
-        request(link, (err, response, body) => {
-            let links = estraiLinksAnimePage(body)
-            let unique = []
+        if (containsNumbers(link.toString().substring(20, link.toString().length))) {
+            request(link, (err, response, body) => {
 
-            for (let i = 0; i < links.length; i++) {
-                for (let j = i+1; j < links.length; j++) {
-                    if (links[i].link == links[j].link) {
-                        links.splice(j, 1)
+            })
+        } else {
+            request(link, (err, response, body) => {
+                let links = estraiLinksAnimePage(body)
+                let unique = []
+
+                for (let i = 0; i < links.length; i++) {
+                    for (let j = i + 1; j < links.length; j++) {
+                        if (links[i].link == links[j].link) {
+                            links.splice(j, 1)
+                        }
                     }
                 }
-            }
-            
 
-            let episodeLinks = []
-            for (let i = 0; i < links.length; i++) {
-                if (links[i].link.includes('.mp4') || links[i].link.includes('bit.ly')) {
-                    episodeLinks.push(links[i])
+
+                let episodeLinks = []
+                for (let i = 0; i < links.length; i++) {
+                    if (links[i].link.includes('.mp4') || links[i].link.includes('bit.ly')) {
+                        episodeLinks.push(links[i])
+                    }
                 }
-            }
-            let message
-            if (!episodeLinks) {
-                message = 'Nessun Episodio Trovato!'
-            }
-            res.render('episodes', {
-                episodes: episodeLinks,
-                message
+                let message
+                if (!episodeLinks) {
+                    message = 'Nessun Episodio Trovato!'
+                }
+                res.render('episodes', {
+                    episodes: episodeLinks,
+                    message
+                })
             })
-        })
-        
+
+        }
     })
     .post('/download', (req, res) => {
         let link = req.body.urlAnime.replace('https', 'http')
-        if (!link.includes('animeforce.org')) {
+        if (!link.includes('animeforce.org') && !link.includes('bit.ly')) {
             link = 'http://ww1.animeforce.org' + link
         }
         if (!link.includes('http')) {
             link = 'http:' + link
         }
         if (link.toString().includes('bit.ly')) {
+            console.log(link)
             request(link, (err, resp, body) => {
+                if (err) console.log(err)
                 let newLink = resp.request.href.replace('https', 'http')
                 if (newLink.toString().includes('.mp4&ol')) {
                     let doc = document.createElement("html")
@@ -138,7 +147,10 @@ express()
                         res.render('downloadPage', {
                             link: openLink
                         })
+                    }).catch(function () {
+                        console.log("Error openload-link");
                     })
+                    
                 } else if (newLink.toString().includes('.mp4')) {
                     request(newLink, (err, resp, body) => {
                         let doc = document.createElement("html")
@@ -159,7 +171,10 @@ express()
                     res.render('downloadPage', {
                         link: openLink
                     })
+                }).catch(function () {
+                    console.log("Error openload-link");
                 })
+                
             })
         } else if (link.toString().includes('.mp4')) {
             request(link, (err, resp, body) => {
@@ -192,7 +207,10 @@ express()
                         res.render('videoPlayer', {
                             video: openLink
                         })
+                    }).catch(function () {
+                        console.log("Error openload-link");
                     })
+                    
                 } else if (newLink.toString().includes('.mp4')) {
                     request(newLink, (err, resp, body) => {
                         let doc = document.createElement("html")
@@ -213,7 +231,10 @@ express()
                     res.render('videoPlayer', {
                         video: openLink
                     })
+                }).catch(function () {
+                    console.log("Error openload-link");
                 })
+                
             })
         } else if (link.toString().includes('.mp4')) {
             request(link, (err, resp, body) => {
@@ -261,4 +282,8 @@ function estraiLinksAnimePage(rawHTML) {
         }
     }
     return (urls)
+}
+
+function containsNumbers(n) {
+    return /\d/.test(n);
 }
