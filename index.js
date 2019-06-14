@@ -1,6 +1,6 @@
 const express = require('express')
 const request = require('request')
-const openload = require('openload-link')
+const Openload = require("openload-url")
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const async = require('async')
@@ -143,12 +143,13 @@ express()
                     let doc = document.createElement("html")
                     doc.innerHTML = body
                     let openloadLink = doc.getElementsByTagName("iframe")[0].src
-                    openload(openloadLink).then(openLink => {
+                    new Openload().downloadPage(openloadLink).then(ol => {
+                        ol.scrape()
                         res.render('downloadPage', {
-                            link: openLink
+                            link: ol.getUrl()
                         })
                     }).catch(function () {
-                        console.log("Error openload-link");
+                        console.log("Error openload-link")
                     })
                     
                 } else if (newLink.toString().includes('.mp4')) {
@@ -167,12 +168,13 @@ express()
                 let doc = document.createElement("html")
                 doc.innerHTML = body
                 let openloadLink = doc.getElementsByTagName("iframe")[0].src
-                openload(openloadLink).then(openLink => {
+                new Openload().downloadPage(openloadLink).then(ol => {
+                    ol.scrape()
                     res.render('downloadPage', {
-                        link: openLink
+                        link: ol.getUrl()
                     })
                 }).catch(function () {
-                    console.log("Error openload-link");
+                    console.log("Error openload-link")
                 })
                 
             })
@@ -203,12 +205,13 @@ express()
                     let doc = document.createElement("html")
                     doc.innerHTML = body
                     let openloadLink = doc.getElementsByTagName("iframe")[0].src
-                    openload(openloadLink).then(openLink => {
+                    new Openload().downloadPage(openloadLink).then(ol => {
+                        ol.scrape()
                         res.render('videoPlayer', {
-                            video: openLink
+                            video: ol.getUrl()
                         })
                     }).catch(function () {
-                        console.log("Error openload-link");
+                        console.log("Error openload-link")
                     })
                     
                 } else if (newLink.toString().includes('.mp4')) {
@@ -227,12 +230,13 @@ express()
                 let doc = document.createElement("html")
                 doc.innerHTML = body
                 let openloadLink = doc.getElementsByTagName("iframe")[0].src
-                openload(openloadLink).then(openLink => {
+                new Openload().downloadPage(openloadLink).then(ol => {
+                    ol.scrape()
                     res.render('videoPlayer', {
-                        video: openLink
+                        video: ol.getUrl()
                     })
                 }).catch(function () {
-                    console.log("Error openload-link");
+                    console.log("Error openload-link")
                 })
                 
             })
