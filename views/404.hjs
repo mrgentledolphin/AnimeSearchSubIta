@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>404</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">404: Not Found!</h1>
+        <h4 class="center-align"><a href="/">Home</a></h4>
+        <img src="https://i.kym-cdn.com/photos/images/original/001/230/774/9b2.gif" style="width: 50%; margin-left: 25%">
+    </div>
+</body>
+</html>

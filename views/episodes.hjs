@@ -52,6 +52,9 @@
         $('.submitter').click(function () {
             console.log($(this).closest('form').submit())
         })
+        $('i').click(function(e) {
+            $(this).addClass('deep-purple-text')
+        })
     </script>
 </body>
 

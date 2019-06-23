@@ -13,6 +13,7 @@
 <body class=" grey darken-4">
     <div class="container ">
         <h1 class="center-align white-text">Video Player</h1>
+        <input style="color: white;" type="url" value="{{video}}">
         <video poster="https://i.imgur.com/LLxcGGS.png" id="player" playsinline controls>
             <source src="{{video}}" type="video/mp4" />
         </video>
@@ -25,10 +26,6 @@
             meta.content = "no-referrer"
             document.getElementsByTagName('head')[0].appendChild(meta)
         })
-    </script>
-    <script src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
-    <script>
-        const player = new Plyr('#player');
     </script>
 </body>
 
